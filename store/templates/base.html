@@ -1,0 +1,466 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>{% block head_title %}{% endblock %}</title>
+        {% block extra_head %}
+        {% endblock %}
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+        <!-- Bootstrap core CSS -->
+        <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+        <!-- Material Design Bootstrap -->
+        <link href="{% static 'css/mdb.min.css' %}" rel="stylesheet">
+        <!-- Your custom styles (optional) -->
+        <link href="{% static 'css/style.min.css' %}" rel="stylesheet">
+        
+        <style type="text/css">
+          html,
+          body,
+          header,
+          .carousel {
+            height: 100vh;
+          }
+          
+          .form-control::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+            color: grey;
+            opacity: 0.2; /* Firefox */
+          }
+
+          .form-control:-ms-input-placeholder { /* Internet Explorer 10-11 */
+            color: grey;
+          }
+
+          .form-control::-ms-input-placeholder { /* Microsoft Edge */
+            color: grey;
+          }
+
+
+      
+          @media (max-width: 740px) {
+      
+            html,
+            body,
+            header,
+            .carousel {
+              height: 100vh;
+            }
+          }
+      
+          @media (min-width: 800px) and (max-width: 850px) {
+      
+            html,
+            body,
+            header,
+            .carousel {
+              height: 100vh;
+            }
+          }
+          /* content for the sidebar */
+          ul.nav li {
+      display: inline-block;
+      position:relative;
+      list-style: none;
+        cursor: pointer;
+      }
+      ul.nav-link { 
+      display: inline-block;
+      width: 25%;
+      position: absolute;
+        cursor: pointer;
+      }
+          .nav-link {
+    border-radius: 5px !important;
+    width: 100px;
+    padding:initial;
+    display: inline-block;
+    flex-direction: column
+}
+
+.nav-link small {
+    font-size: 20px
+}
+
+.nav-link:hover {
+    background-color: #f810105d !important;
+    
+}
+.nav-link.current {
+    background-color: #e71a1af5
+}
+
+
+.nav-content {display:none;
+   background: rgb(255, 255, 255);
+    float:right;
+     position: absolute;
+      padding:0px;
+       padding-bottom:5px;
+        padding-left:0px;
+         padding-right:0px;
+          font-size:12px;
+           width:100%;
+            /* color:#fff */
+          }
+          .nav-content.current{display:block;}
+
+          #outer-container {
+	display: table;
+	width: 100%;
+	height: 100%;
+}
+
+#mySideNav {
+	display: table-cell;
+	vertical-align: top;
+}
+
+#content1,#content2,#content3 {
+	display: none;
+  width: 100%;
+	vertical-align:top;
+}
+
+/* all css content for the tabs */
+.tabs-container {width: 100%;
+   margin: 0 auto;
+  }
+
+ul.tabs {margin: 0px;
+   padding: 0px;
+    list-style: none;
+     text-align:center;
+      background: #9dcbce;
+       height:40px;
+        /* border-top:1px solid #303132;
+        border-bottom: 1px solid #303132; */
+      }
+
+ul.tabs li { background: #9dcbce;
+   height:40px;
+    line-height:25px;
+     color: #fff;
+      display: inline-block;
+       padding: 10px 15px;
+        cursor: pointer;
+      }
+ul.tabs li:hover {background:rgb(245, 6, 6);}
+
+ul.tabs li.current{background: rgb(189, 241, 245);color: #fff;}
+
+.tab-content {display:none;
+   background: rgb(255, 255, 255);
+    float:left;
+     position:relative;
+      padding:0px;
+       padding-bottom:5px;
+        padding-left:0px;
+         padding-right:0px;
+          font-size:12px;
+           width:100%;
+           height: 100%;
+            /* color:#fff */
+          }
+
+.tab-content.current{display:inline-block;}
+
+.block-cart {width:100%;
+   padding:0px;
+    padding-top:5px;
+     padding-bottom:10px;
+      float:left;
+       position:relative;
+        text-align:left;
+      }
+.cart-block-title {font-weight:normal;
+   text-align:center;
+    font-size:24px;
+     text-transform:uppercase;
+      font-family: 'Open Sans', sans-serif;
+       float:left;
+        position:relative;
+         width:100%;
+        }
+.block-cart .empty {color:#999999;
+   float:left;
+    position:relative;
+     width:100%;
+      text-align:center;
+       margin-top:10px;
+      }
+span.items-none { display:none;
+   visibility:hidden
+  }
+span.items {background-color: red;
+   border-radius: 50%;
+    color: #fff;
+     font-size:10px;
+      height:19px; width:19px;
+       line-height:19px;
+        margin-left:3px;
+         margin-top:0px;
+          float:right;
+           position:relative;
+            text-align:center;
+          }
+          /* booking form css contents         */
+          
+
+.section {
+    position: relative;
+    height: 100vh
+}
+
+.section .section-center {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%)
+}
+
+#booking {
+    font-family: 'Raleway', sans-serif
+}
+
+.booking-form {
+    position: relative;
+    max-width: 642px;
+    width: 100%;
+    margin: auto;
+    padding: 40px;
+    overflow: hidden;
+    background-image: url('/static/images/loft_outside.jpg');
+    background-size: cover;
+    border-radius: 5px;
+    z-index: 20
+}
+
+.booking-form::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: -1
+}
+
+.booking-form .form-header {
+    text-align: center;
+    position: relative;
+    margin-bottom: 30px
+}
+
+.booking-form .form-header h1 {
+    font-weight: 700;
+    text-transform: capitalize;
+    font-size: 42px;
+    margin: 0px;
+    color: #fff
+}
+
+.booking-form .form-group {
+    position: relative;
+    margin-bottom: 30px
+}
+
+.booking-form .form-control {
+    background-color: rgba(255, 255, 255, 0.2);
+    height: 60px;
+    padding: 0px 25px;
+    border: none;
+    border-radius: 40px;
+    color: #fff;
+    -webkit-box-shadow: 0px 0px 0px 2px transparent;
+    box-shadow: 0px 0px 0px 2px transparent;
+    -webkit-transition: 0.2s;
+    transition: 0.2s
+}
+.booking-form .order-desc {
+    background-color: rgba(255, 255, 255, 0.2);
+    height: 60px;
+    padding: 0px 25px;
+    border: none;
+    border-radius: 40px;
+    font-size: large;
+    color: #fff;
+    -webkit-box-shadow: 0px 0px 0px 2px transparent;
+    box-shadow: 0px 0px 0px 2px transparent;
+    -webkit-transition: 0.2s;
+    transition: 0.2s
+}
+
+.booking-form .form-control::-webkit-input-placeholder {
+    color: rgba(255, 255, 255, 0.5)
+}
+
+.booking-form .form-control:-ms-input-placeholder {
+    color: rgba(255, 255, 255, 0.5)
+}
+
+.booking-form .form-control::placeholder {
+    color: rgba(255, 255, 255, 0.5)
+}
+
+.booking-form .form-control:focus {
+    -webkit-box-shadow: 0px 0px 0px 2px #ff8846;
+    box-shadow: 0px 0px 0px 2px #ff8846
+}
+
+.booking-form input[type="date"].form-control {
+    padding-top: 16px
+}
+
+.booking-form input[type="time"].form-control:invalid {
+    color: rgba(255, 255, 255, 0.5)
+}
+
+.booking-form input[type="date"].form-control+.form-label {
+    opacity: 1;
+    top: 10px
+}
+.booking-form input[type="tel"].form-control+.form-label {
+    opacity: 1;
+    top: 10px
+}
+
+.booking-form select.form-control {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none
+}
+
+.booking-form select.form-control:invalid {
+    color: rgba(255, 255, 255, 0.5)
+}
+
+.booking-form select.form-control+.select-arrow {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    width: 32px;
+    line-height: 32px;
+    height: 32px;
+    text-align: center;
+    pointer-events: none;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 14px
+}
+
+.booking-form select.form-control+.select-arrow:after {
+    content: '\279C';
+    display: block;
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg)
+}
+
+.booking-form select.form-control option {
+    color: #000
+}
+
+.booking-form .form-label {
+    position: absolute;
+    top: -10px;
+    left: 25px;
+    opacity: 0;
+    color: #ff8846;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.3px;
+    height: 15px;
+    line-height: 15px;
+    -webkit-transition: 0.2s all;
+    transition: 0.2s all
+}
+
+.booking-form .form-group.input-not-empty .form-control {
+    padding-top: 16px
+}
+
+.booking-form .form-group.input-not-empty .form-label {
+    opacity: 1;
+    top: 10px
+}
+
+.booking-form .submit-btn {
+    color: #fff;
+    background-color: #e35e0a;
+    font-weight: 700;
+    height: 60px;
+    padding: 10px 30px;
+    width: 100%;
+    border-radius: 40px;
+    border: none;
+    text-transform: uppercase;
+    font-size: 16px;
+    letter-spacing: 1.3px;
+    -webkit-transition: 0.2s all;
+    transition: 0.2s all
+}
+
+.booking-form .submit-btn:hover,
+.booking-form .submit-btn:focus {
+    opacity: 0.9
+}
+.page-footer{
+  display: block;
+  visibility: hidden;
+  overflow: scroll;
+  z-index: -1;
+  height: 25%;
+  /* equal to footer height */
+  margin-bottom: -142px; 
+  width: 100%;
+}
+
+
+      
+        </style>
+      </head>
+      {% include 'navbar.html' %}
+      {% include 'scripts.html' %}
+      <link href="{% static 'js/bootstrap.min.js' %}" rel="stylesheet">
+      <link href="{% static 'js/jquery-3.4.1.min.js' %}" rel="stylesheet">
+      <div class="mt-5 pt-4">
+        {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+              {{ message }}
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+        
+            </div>
+            {% endfor %}
+        {% endif %}
+      </div>
+
+<body>
+  <main>
+
+      <!-- Navbar -->
+  
+    <!-- Navbar -->
+    {% block content %}
+
+    {% endblock content %}
+    
+    {% block extra_body %}
+    {% endblock %}
+
+    {% include 'footer.html' %}
+    {% include 'scripts.html' %}
+</main>
+</body>
+</html>
+

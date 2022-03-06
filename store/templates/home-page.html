@@ -1,0 +1,307 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+<body>
+
+  <!--Carousel Wrapper-->
+  <div id="carousel-example-1z" class="carousel slide carousel-fade pt-4" data-ride="carousel">
+
+    <!--Indicators-->
+    <ol class="carousel-indicators">
+      <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
+      <li data-target="#carousel-example-1z" data-slide-to="1"></li>
+      <li data-target="#carousel-example-1z" data-slide-to="2"></li>
+    </ol>
+    <!--/.Indicators-->
+
+    <!--Slides-->
+    <div class="carousel-inner" role="listbox">
+
+      <!--First slide-->
+      <div class="carousel-item active">
+        <div class="view" style="background-image:url('static/images/meal.jpg' ); background-repeat: no-repeat; background-size: cover;">
+
+          <!-- Mask & flexbox options-->
+          <div class="mask rgba-black-strong d-flex justify-content-center align-items-center">
+
+            <!-- Content -->
+            <div class="text-center white-text mx-5 wow fadeIn">
+              <h1 class="mb-4">
+                <strong>Welcome to Rio Fish!</strong>
+              </h1>
+
+
+              <p class="mb-4 d-none d-md-block">
+                <strong>We are more than just an aggregator. We are an ecosystem of Vendors, Farmers and Suppliers. </strong>
+              </p>
+
+              <!-- <a target="_blank" href="https://mdbootstrap.com/education/bootstrap/" class="btn btn-outline-white btn-lg">Read
+                more about us here
+                <i class="fas fa-graduation-cap ml-2"></i>
+              </a> -->
+            </div>
+            <!-- Content -->
+
+          </div>
+          <!-- Mask & flexbox options-->
+
+        </div>
+      </div>
+      <!--/First slide-->
+
+      <!--Second slide-->
+      <div class="carousel-item">
+        <div class="view" style="background-image: url('static/images/fish_ugali.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+          <!-- Mask & flexbox options-->
+          <div class="mask rgba-black-strong d-flex justify-content-center align-items-center">
+
+            <!-- Content -->
+            <div class="text-center white-text mx-5 wow fadeIn">
+              <h1 class="mb-4">
+                <strong>Unapologetically Kenyan!</strong>
+              </h1>
+
+              <!-- <p>
+                <strong>Best & free guide of responsive web design</strong>
+              </p> -->
+
+              <p class="mb-4 d-none d-md-block">
+                <strong>Dine or order from any restaurant that stocks fish from Rio. Carefully chosen because they prepare the most original 
+                  most original cuisines.
+                </strong>
+              </p>
+
+              <!-- <a target="_blank" href="https://mdbootstrap.com/education/bootstrap/" class="btn btn-outline-white btn-lg">Start
+                free tutorial
+                <i class="fas fa-graduation-cap ml-2"></i>
+              </a> -->
+            </div>
+            <!-- Content -->
+
+          </div>
+          <!-- Mask & flexbox options-->
+
+        </div>
+      </div>
+      <!--/Second slide-->
+
+      <!--Third slide-->
+      <div class="carousel-item">
+        <div class="view" style="background-image: url('static/images/fish_bowl.jpg'); background-repeat: no-repeat; background-size: cover;">
+
+          <!-- Mask & flexbox options-->
+          <div class="mask rgba-black-strong d-flex justify-content-center align-items-center">
+
+            <!-- Content -->
+            <div class="text-center white-text mx-5 wow fadeIn">
+              <h1 class="mb-4">
+                <strong>Prefer to order from your local Mama samaki or Vendor?</strong>
+              </h1>
+
+          
+              <p class="mb-4 d-none d-md-block">
+                <strong>We supply to them as well! We work to make sure you enjoy Rio fish even at your local supplier</strong>
+              </p>
+
+              <!-- <a target="_blank" href="https://mdbootstrap.com/education/bootstrap/" class="btn btn-outline-white btn-lg">Start
+                free tutorial
+                <i class="fas fa-graduation-cap ml-2"></i>
+              </a> -->
+            </div>
+            <!-- Content -->
+
+          </div>
+          <!-- Mask & flexbox options-->
+
+        </div>
+      </div>
+      <!--/Third slide-->
+
+    </div>
+    <!--/.Slides-->
+
+    <!--Controls-->
+    <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+    <!--/.Controls-->
+
+  </div>
+  <!--/.Carousel Wrapper-->
+
+  <!--Main layout-->
+  <main>
+    <div class="container">
+
+      <!--Navbar-->
+      <p>
+        <h1>Below are the facilities under which you will find your preferred type of fish</h1>
+        <h6 class="blue-text">Select Traders to buy from your local fish-monger, Frachises to buy from the closest Rio Franchise to you or
+          Restaurant to either reserve a seat or order take-away
+        
+      </p>
+      <!--/.Navbar-->
+
+      <!--Section: Products v.3-->
+      <section class="text-center mt-3 mb-4">
+  
+
+        </div>
+        <!--Grid row-->
+
+        <!--Grid row-->
+        <div class="row wow fadeIn mx-5 justify-content-center">
+
+          <!--Grid column-->
+          <div class="col-lg-3 col-md-auto mb-3">
+
+            <!--Card-->
+            <div class="card d-flex" style="height: 300px;">
+
+              <!--Card image-->
+              <div class="view overlay hover-overlay">
+                <img src="{% static 'images/franchise_front.jpg' %}" class="card-img-top"
+                  alt="">
+                <a>
+                  <div class="mask rgba-white-slight"></div>
+                </a>
+              </div>
+              <!--Card image-->
+
+              <!--Card content-->
+              <div class="card-body text-center">
+                <!--Category & Title-->
+                <a href="/vendor" target={{vendor}} class="red-text">
+                  <h5>Franchise</h5>
+                </a>
+                <!-- <h5>
+                  <strong>
+                    <a href="" class="dark-grey-text">Denim shirt
+                      <span class="badge badge-pill danger-color">NEW</span>
+                    </a>
+                  </strong>
+                </h5>
+
+                <h4 class="font-weight-bold blue-text">
+                  <strong>120$</strong>
+                </h4> -->
+
+              </div>
+              <!--Card content-->
+
+            </div>
+            <!--Card-->
+
+          </div>
+          <!--Grid column-->
+
+          <!--Grid column-->
+          <div class="col-lg-3 col-md-auto mb-3">
+
+            <!--Card-->
+            <div class="card d-flex" style="height: 300px;">
+
+              <!--Card image-->
+              <div class="view overlay">
+                <img src="{% static 'images/loft.jpg' %}" class="card-img-top"
+                  alt="">
+                <a>
+                  <div class="mask rgba-white-slight"></div>
+                </a>
+              </div>
+              <!--Card image-->
+
+              <!--Card content-->
+              <div class="card-body text-center">
+                <!--Category & Title-->
+                <a href="/restaurants" target={{restaurants}} class="red-text">
+                  <h5>Restaurants</h5>
+                </a>
+                <!-- <h5>
+                  <strong>
+                    <a href="" class="dark-grey-text">Sweatshirt</a>
+                  </strong>
+                </h5>
+
+                <h4 class="font-weight-bold blue-text">
+                  <strong>139$</strong>
+                </h4> -->
+
+              </div>
+              <!--Card content-->
+
+            </div>
+            <!--Card-->
+
+          </div>
+          <!--Grid column-->
+
+          <!--Fourth column-->
+          <div class="col-lg-3 col-md-auto mb-3">
+
+            <!--Card-->
+            <div class="card d-flex" style="height: 300px;">
+
+              <!--Card image-->
+              <div class="view overlay">
+                <img src="{% static 'images/monger.jpeg' %}" class="card-img-top"
+                  alt="">
+                <a>
+                  <div class="mask rgba-white-slight"></div>
+                </a>
+              </div>
+              <!--Card image-->
+
+              <!--Card content-->
+              <div class="card-body text-center">
+                <!--Category & Title-->
+                <a href="/mongers" target="{{mongers}}" class="blue-text">
+                  <h5>Fish Mongers</h5>
+                </a>
+                <!-- <h5>
+                  <strong>
+                    <a href="" class="dark-grey-text">Black jacket</a>
+                  </strong>
+                </h5>
+
+                <h4 class="font-weight-bold blue-text">
+                  <strong>219$</strong>
+                </h4> -->
+
+              </div>
+              <!--Card content-->
+
+            </div>
+            <!--Card-->
+
+          </div>
+          <!--Fourth column-->
+
+        </div>
+        <!--Grid row-->
+
+      </section>
+      <!--Section: Products v.3-->
+
+      <!--Pagination-->
+
+      <!--Pagination-->
+
+    </div>
+  </main>
+  <!--Main layout-->
+
+  
+</body>
+
+</html>
+
+{% endblock content %}

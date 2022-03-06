@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<body>
+    <main>
+      {% for restaurant in restaurants %}
+        <h1 text-center>Welcome to {{ restaurant.name }}</h1>
+       {% endfor %} 
+ <h2>Menu</h2>
+
+    <hr>
+    <section class="text-center mt-3 mb-4">
+      <div class="container">
+      <div class="row mx-5 ml-4">
+        
+
+    {% for item in food_items %}
+    
+
+    <div class="col-lg-3 col-md-6 mb-4 align-items-start">
+    {% if item.type == 'food' %}
+    <div class="card d-flex" style="height: 300px;">
+
+      <!--Card image-->
+      <div class="view overlay">
+      <img src="{% static 'images/stew.jpg' %}" class="card-img-top"
+          alt="">
+      <a href="{{item.get_absolute_url}}">
+          <div class="mask rgba-white-slight"></div>
+      </a>
+      </div>
+      <!--Card image-->
+
+      <!--Card content-->
+      <div class="card-body text-center">
+      <!--Category & Title-->
+      <a href="" class="grey-text">
+          <!-- <h5>{{vendor.get_category_display}}</h5> -->
+      </a>
+      <h5>
+          <strong>
+          <a href="{{item.get_absolute_url}}" class="red-text">{{item.name }}
+          </a>
+          </strong>
+      </h5>
+
+      <h6 class="text">
+            {{ item.description }}
+          </item>
+      </h6>
+    <h5 class="font-weight-bold blue-text">
+      <strong>
+        Kshs {{ item.price }}
+      </item></strong>
+  </h5>
+  <h6 class="blue-text">
+      {{ item.available }}
+    </item>
+</h6>
+
+      </div>
+      <!--Card content-->
+
+  </div>
+</div>
+
+{% endif %}
+{% endfor %}
+
+</div>
+</div>
+</section>
+     
+     
+      
+    </main>
+</body>
+{% endblock content %}
