@@ -22,6 +22,7 @@
           html,
           body,
           header,
+          
           .carousel {
             height: 100vh;
           }
@@ -80,6 +81,7 @@
     display: inline-block;
     flex-direction: column
 }
+
 
 .nav-link small {
     font-size: 20px
@@ -412,16 +414,6 @@ span.items {background-color: red;
 .booking-form .submit-btn:focus {
     opacity: 0.9
 }
-.page-footer{
-  display: block;
-  visibility: hidden;
-  overflow: scroll;
-  z-index: -1;
-  height: 25%;
-  /* equal to footer height */
-  margin-bottom: -142px; 
-  width: 100%;
-}
 
 
       
@@ -457,10 +449,12 @@ span.items {background-color: red;
     
     {% block extra_body %}
     {% endblock %}
-
-    {% include 'footer.html' %}
+    
+    
     {% include 'scripts.html' %}
 </main>
+{% include 'footer.html' %}
 </body>
+
 </html>
 

@@ -2,6 +2,7 @@
 html,
 body,
 .view {
+  min-height: 100%;
   height: 100%; }
 
 /* Half Page Carousel itself*/
@@ -20,6 +21,6 @@ body,
 
 /* Footer color for sake of consistency with Navbar */
 .page-footer {
-  background-color: #4a0fec; }
+  background-color: #a89acf; }
 
  
