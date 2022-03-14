@@ -2,7 +2,6 @@
 {% load static %}
 
 {% block content %}
-<html>
 <body>
     <main>
         <div class="container mt-4">
@@ -14,15 +13,14 @@
                     <div class="active-purple-3 active-purple-4 mb-4">
                       <input class="form-control" type="text" placeholder="Search" aria-label="Search">
                     </div>
-                    </div>
                     <!-- Collapsible content -->
                 
                   </nav>
                 <!-- Collapsible content -->
             
-        </div>
+        
 
-        <section class="text-center mb-3 mt-4">
+        <div class="container text-center mb-3 mt-4">
         <!--Grid row-->
             <div class="row wow fadeIn mx-5 ml-4">
 
@@ -75,7 +73,6 @@
                 </div>
                 {% endfor %}
             </div>
-        </section>
     <!--Grid column-->
     <!--Pagination-->
     {% if is_paginated %}
@@ -109,7 +106,7 @@
     </nav>
     {% endif %}
     <!--Pagination-->
+  </div>
     </main>
 </body>
-</html>
 {% endblock %}

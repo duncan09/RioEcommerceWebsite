@@ -64,7 +64,6 @@ body {
   background-color: #fff;
   min-height: 100%;
   position: relative;
-  padding-bottom: 80px;
 }
 
 [tabindex="-1"]:focus {

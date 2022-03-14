@@ -79,15 +79,15 @@
   <!--Main layout-->
   <main>
     
-    <div class="container mt-3 mr-1">
+    <div class="container mt-3">
 
       <!--Grid row-->
       <div class="row wow fadeIn">
 
         <!--Grid column-->
          <!-- The grid: four columns -->
-        <div class="col-sm-8 mb-3 d-flex align-items-start">
-          <img src="{% static 'images/stew.jpg' %}" width="580px"
+        <div class=" col-sm-8 mb-3 d-flex align-items-start">
+          <img src="{% static 'images/stew.jpg' %}"
            height="200px" alt="Responsive image" class="img-fluid rounded float-left">
         </div>
 
@@ -95,84 +95,30 @@
               <div class="row mr-2">
                 <div class="col">
                 <img src="{% static 'images/fish_fries.jpg' %}" class=" rounded float-left mb-2 d-flex"
-               class="img-fluid" alt="Responsive image" height="150px" width="150px">
+               class="img-fluid" alt="Responsive image" height="200px" width="200px">
               </div>
               <div class="col">
                 <img src="{% static 'images/fish_brown_ugali.jpg' %}" class="rounded float-left mb-2 d-flex"
-                 class="img-fluid" alt="Responsive image" height="150px" width="150px">
+                 class="img-fluid" alt="Responsive image" height="200px" width="200px">
               </div>
             </div>
             <div class="row">
             <div class="col">
               <img src="{% static 'images/fish_raw.jpg' %}" class="rounded float-left mb-2"
-               class="img-fluid" alt="image" width="150px" height="150px">
+               class="img-fluid" alt="image" width="200px" height="200px">
             </div>
             <div class="col">
               <img src="{% static 'images/fish_plate.jpg' %}" class="rounded float-left mb-2"
-              class="img-fluid" alt="image" width="150px" height="150px">
+              class="img-fluid" alt="image" width="200px" height="200px">
             </div>
             </div>
               </div>
             </div>
           </div>
-        <!--Grid column-->
-
-        <!--Grid column-->
-
-          <!--Content-->
-          <div>
-          <div class="container">
-          <div class="p-2"><h6 class="my-2 h6 text-center"></h6>
-          
-            <div class="mb-3">
-              <a href="">
-                <span class=""><h1>{{object.name}}</h1></span>
-              </a>
-              <!-- <a href="">
-                <span class="badge blue mr-1">New</span>
-              </a>
-              <a href="">
-                <span class="badge red mr-1">Bestseller</span>
-              </a> -->
-            </div>
-
-            <p class="lead">
-              {% if object.discount_price %}
-              <span class="mr-1">
-              <del>${{object.price}}</del> 
-              </span>
-              <span>${{object.discount_price}}</span>
-              {% else %}
-              <span>KES {{object.price}}</span>
-              
-              {% endif %}     
-                    
-            </p>
-
-            <p class="lead font-weight-bold">Description</p>
-
-            <p>{{object.description}}</p>
-
-            <!-- <form class="d-flex justify-content-left">
-              <input type="number" value="1" aria-label="Search" class="form-control" style="width: 100px">
-              
-            </form> -->
-            <a href="{{object.get_food_add_to_cart_url}}" class="btn btn-primary btn-md my-0 p rounded" >Add to cart
-              <i class="fas fa-shopping-cart ml-1"></i>
-            </a>
-
-
-            <a href="{{object.get_food_remove_from_cart_url}}" class="btn btn-danger btn-md my-0 p rounded" >Remove from cart
-            </a>
-
-          </div>
-        </div>
-          <!--Content-->
-
-        </div>
-        <!--Grid column-->
+        
         
       <!--Grid row tabs for selecting order below-->
+      <div class="container">
       <div class="row">
         <div class="tabs-container container mb-2">
  
@@ -187,14 +133,14 @@
           </ul>
         </div>
       </div>
+      </div>
       
     
     <!-- The beverage and extras sidebar -->
       
-      <div class="container " style="margin-top: 15px;">
+      <div class="container" style="height: 300px;margin-bottom: 40px;">
         <div class="row">
-          <div class="container">
-            <div class = "vertical" style="margin-left: 75%;"></div>
+          <div class="col-3">
         <div id="tab-1" class="tab-content">
           
             <div class=" sidenav wrapper d-flex flex-column flex-shrink-0" id="mySideNav">
@@ -205,15 +151,19 @@
               </ul>
             </div>
           </div>
-          <div class="container">
+        </div>
+          <div class="col-9">
+            
+            <!-- side navigation for accompaniments container -->
          <div class="container">
-              <div id="content1" class="nav-content" style="margin-left: 10%;">
+           <!-- beverages div -->
+              <div id="content1" class="nav-content" style="margin-left: 3%;">
                 <div class="row">
                 <div class="col">
                   <img src="{% static 'images/coke.jpeg' %}" 
                  alt="Responsive image" class="rounded float-left" height="130px" width="130px">
                 </div>
-                <div class="col-sm-3 col-md-4">
+                <div class="col-sm-3">
                   <h4>Chilled 300ml Soda at Kes 70</h4> 
                 </div>
                 <div class="col-sm-5 col-md-6">
@@ -224,17 +174,14 @@
               </div>
             </div>
             
-          </div> 
-          
-          <!-- side dish div -->
-          <div class="container">
-            <div id="content2" class="nav-content" style="margin-left: 10%;">
+            <!-- side dish div -->
+            <div id="content2" class="nav-content" style="margin-left: 3%;">
               <div class="row">
               <div class="col">
                 <img src="{% static 'images/ugali.jpeg' %}" 
                alt="Responsive image" class="rounded float-left" height="130px" width="130px">
               </div>
-              <div class="col-sm-3 col-md-4">
+              <div class="col-sm-3">
                 <h2>Side dish of Ugali</h2> 
               </div>
               <div class="col-sm-5 col-md-6">
@@ -246,129 +193,108 @@
           </div>
           
         </div> 
-          </div>
-
-        <!-- Snacks div -->
-        <div class="container">
-          <div id="content3" class="nav-content" style="margin-left: 10%;">
-            <div class="row">
-            <div class="col">
-              <img src="https://cdn.pixabay.com/photo/2017/06/02/17/37/fish-2366925_960_720.jpg" 
-             alt="Responsive image" class="rounded float-left" height="130px" width="130px">
-            </div>
-            <div class="col-sm-3 col-md-4">
-              <h2>Snacks</h2> 
-            </div>
-            <div class="col-sm-5 col-md-6">
-              <a href="{{object.get_food_add_to_cart_url}}" class="btn btn-primary btn-md rounded" >Add to cart
-                <i class="fas fa-shopping-cart ml-1"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-        
-      </div> 
-    </div>
-    </div>
-        
-            
-          
-         
-    
-        
-
-    
-     
-      <!-- Reservation form -->
-      <div class="container mb-4 mt-5">
-        <div id="tab-2" class="tab-content">
-          <div id="booking" class="section">
-            <div class="section-center">
+                <!-- Snacks div -->
                 <div class="container">
+                  <div id="content3" class="nav-content" style="margin-left: 10%;">
                     <div class="row">
-                        <div class="booking-form">
-                            <div class="form-header">
-                                <h1>Make your reservation</h1>
-                            </div>
-                            <form>
-                                <div class="form-group"> <input class="form-control" type="text" placeholder="Name"> <span class="form-label">Full Name</span> </div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group"> <input class="form-control" type="date" required> <span class="form-label">Date</span> </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group"> <input class="form-control" type="time" required> <span class="form-label">Time</span> </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-          
+                    <div class="col">
+                      <img src="https://cdn.pixabay.com/photo/2017/06/02/17/37/fish-2366925_960_720.jpg" 
+                     alt="Responsive image" class="rounded float-left" height="130px" width="130px">
+                    </div>
+                    <div class="col-sm-3 col-md-4">
+                      <h2>Snacks</h2> 
+                    </div>
+                    <div class="col-sm-5 col-md-6">
+                      <a href="{{object.get_food_add_to_cart_url}}" class="btn btn-primary btn-md rounded" >Add to cart
+                        <i class="fas fa-shopping-cart ml-1"></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div> 
+          </div> 
+
+    </div>
+      <!-- Reservation form -->
+      
+    </div>
+    <div class="container mb-5" style="height: 580px;margin-bottom: 40px;">
+      <div id="tab-2" class="tab-content">
+        <div id="booking" class="section">
+          <div class="section-center">
+              <div class="container">
+                  <div class="row">
+                      <div class="booking-form">
+                          <div class="form-header">
+                              <h1>Make your reservation</h1>
+                          </div>
+                          <form>
+                              <div class="form-group"> <input class="form-control" type="text" placeholder="Name"> <span class="form-label">Full Name</span> </div>
+                              <div class="row">
                                   <div class="col-md-6">
-                                    <div class="form-group"> <input class="form-control" type="tel" placeholder="Enter your Phone Number"> <span class="form-label">Phone</span> </div>
+                                      <div class="form-group"> <input class="form-control" type="date" required> <span class="form-label">Date</span> </div>
                                   </div>
                                   <div class="col-md-6">
+                                      <div class="form-group"> <input class="form-control" type="time" required> <span class="form-label">Time</span> </div>
+                                  </div>
+                              </div>
+                              <div class="row">
+        
+                                <div class="col-md-6">
+                                  <div class="form-group"> <input class="form-control" type="tel" placeholder="Enter your Phone Number"> <span class="form-label">Phone</span> </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group"> <select class="form-control" required>
+                                            <option value="" selected hidden>Choose restaurant</option>
+                                            <option>The Loft</option>
+                                            
+                                        </select> <span class="form-label">Restaurant</span>
+                                       </div>
+                                        
+                                </div>
+                            </div>
+                              <div class="row">
+        
+                                  <!-- <div class="col-md-6">
+                                    <div class="form-group"> <input class="form-control" type="tel" placeholder="Enter your Phone Number"> <span class="form-label">Phone</span> </div>
+                                  </div> -->
+                                  <div class="col-md-6">
                                       <div class="form-group"> <select class="form-control" required>
-                                              <option value="" selected hidden>Choose restaurant</option>
-                                              <option>The Loft</option>
-                                              
-                                          </select> <span class="form-label">Restaurant</span>
+                                              <option value="" selected hidden>Number of family members</option>
+                                              <option>1</option>
+                                              <option>2</option>
+                                              <option>3</option>
+                                              <option>4</option>
+                                              <option>5</option>
+                                          </select> <span class="form-label">Family Size</span>
                                          </div>
                                           
                                   </div>
                               </div>
-                                <div class="row">
-          
-                                    <!-- <div class="col-md-6">
-                                      <div class="form-group"> <input class="form-control" type="tel" placeholder="Enter your Phone Number"> <span class="form-label">Phone</span> </div>
-                                    </div> -->
-                                    <div class="col-md-6">
-                                        <div class="form-group"> <select class="form-control" required>
-                                                <option value="" selected hidden>Number of family members</option>
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
-                                            </select> <span class="form-label">Family Size</span>
-                                           </div>
-                                            
+                                  <div class="row">
+                                    <div class="col-md-12">
+                                      <div class="form-group">
+                                        <option value="" selected hidden>Order Description</option>
+                                        <textarea class="order-desc col-md-12" id="order-text" name="order-text" placeholder="Enter your order here" rows="5"></textarea>
+                                        <span class="form-label">Order</span>
+                                      </div>
                                     </div>
                                 </div>
-                                    <div class="row">
-                                      <div class="col-md-12">
-                                        <div class="form-group">
-                                          <option value="" selected hidden>Order Description</option>
-                                          <textarea class="order-desc col-md-12" id="order-text" name="order-text" placeholder="Enter your order here" rows="5"></textarea>
-                                          <span class="form-label">Order</span>
-                                        </div>
-                                      </div>
-                                  </div>
-                              
-                                <div class="row">
-                                  <div class="form-btn"> <button class="submit-btn">Book Now</button> </div>
-                              </div>
+                            
+                              <div class="row">
+                                <div class="form-btn"> <button class="submit-btn">Book Now</button> </div>
                             </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                          </div>
+                          </form>
+                      </div>
+                  </div>
+              </div>
+          </div>
       </div>
-      </div>
-      </div>
-    
-    
-    
-    
-  
- 
+    </div>
 
- 
-  
-
-      <!--Grid row-->
-      
-      <!--Grid row-->
+  </div>
+    
 
   </main>
   <!--Main layout-->
@@ -376,7 +302,4 @@
 
 
 </body>
-
-</html>
-
 {% endblock content %}

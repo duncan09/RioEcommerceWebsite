@@ -40,7 +40,16 @@
             color: grey;
           }
 
+.container{
+  min-height: 100%;
+  position: relative;
+}
 
+.page-footer{
+background-color:lightgray;
+scroll-behavior: auto;
+   
+}
       
           @media (max-width: 740px) {
       
@@ -232,10 +241,12 @@ span.items {background-color: red;
 
 .booking-form {
     position: relative;
-    max-width: 642px;
+    max-width: 600px;
+    height: 540px;
     width: 100%;
     margin: auto;
-    padding: 40px;
+    margin-bottom: 30px;
+    padding: 20px;
     overflow: hidden;
     background-image: url('/static/images/loft_outside.jpg');
     background-size: cover;
@@ -257,13 +268,13 @@ span.items {background-color: red;
 .booking-form .form-header {
     text-align: center;
     position: relative;
-    margin-bottom: 30px
+    margin-bottom: 10px
 }
 
 .booking-form .form-header h1 {
     font-weight: 700;
     text-transform: capitalize;
-    font-size: 42px;
+    font-size: 32px;
     margin: 0px;
     color: #fff
 }
@@ -275,8 +286,8 @@ span.items {background-color: red;
 
 .booking-form .form-control {
     background-color: rgba(255, 255, 255, 0.2);
-    height: 60px;
-    padding: 0px 25px;
+    height: 40px;
+    padding: 0px 20px;
     border: none;
     border-radius: 40px;
     color: #fff;
@@ -449,11 +460,11 @@ span.items {background-color: red;
     
     {% block extra_body %}
     {% endblock %}
-    
-    
+    {% include 'footer.html' %}
+       
     {% include 'scripts.html' %}
 </main>
-{% include 'footer.html' %}
+
 </body>
 
 </html>
