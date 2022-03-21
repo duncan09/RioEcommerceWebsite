@@ -1,5 +1,5 @@
 from django.urls import path,include
-from store.views import (CheckoutView, FoodDetailView, FoodOrderSummaryView, ItemDetailView, MongerView,
+from store.views import (CheckoutView, FoodDetailView, FoodOrderSummaryView, ItemDetailView, MongerView, RestaurantCheckoutView,
  RestaurantView,
   VendorView,
 HomeView,
@@ -18,6 +18,7 @@ urlpatterns=[
     path('products/<slug>/',ItemDetailView.as_view(),name='products'),
     path('food-products/<slug>/',FoodDetailView.as_view(),name='food-products'),
     path('checkout',CheckoutView.as_view(),name='checkout'),
+    path('restaurant-checkout',RestaurantCheckoutView.as_view(),name='restaurant-checkout'),
     path('order-summary',OrderSummaryView.as_view(),name='order-summary'),
     path('food-order-summary',FoodOrderSummaryView.as_view(),name='food-order-summary'),
     path('about',about_page,name='about'),

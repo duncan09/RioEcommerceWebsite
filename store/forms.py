@@ -23,6 +23,7 @@ class ReservationForm(forms.Form):
     fullName=forms.CharField()
     reserveDate=forms.DateField()
     reserveTime=forms.DateTimeField()
+    restaurant=forms.CharField()
     phoneNumber=forms.CharField()
     familySize=forms.IntegerField()
     reserveOrder=forms.CharField(max_length=400)

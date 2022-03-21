@@ -228,20 +228,33 @@
                           <div class="form-header">
                               <h1>Make your reservation</h1>
                           </div>
-                          <form>
-                              <div class="form-group"> <input class="form-control" type="text" placeholder="Name"> <span class="form-label">Full Name</span> </div>
+                          <form method="POST">
+                            {% csrf_token %}
+                              <div class="form-group">
+                                 <input class="form-control" type="text" placeholder="Name">
+                                 {{form.fullName}}
+                                 <span class="form-label">Full Name</span> </div>
                               <div class="row">
                                   <div class="col-md-6">
-                                      <div class="form-group"> <input class="form-control" type="date" required> <span class="form-label">Date</span> </div>
+                                      <div class="form-group"> 
+                                        <input class="form-control" type="date" required>
+                                        {{form.reserveDate}}
+                                         <span class="form-label">Date</span> </div>
                                   </div>
                                   <div class="col-md-6">
-                                      <div class="form-group"> <input class="form-control" type="time" required> <span class="form-label">Time</span> </div>
+                                      <div class="form-group">
+                                         <input class="form-control" type="time" required>
+                                         {{form.reserveTime}}
+                                          <span class="form-label">Time</span> </div>
                                   </div>
                               </div>
                               <div class="row">
         
                                 <div class="col-md-6">
-                                  <div class="form-group"> <input class="form-control" type="tel" placeholder="Enter your Phone Number"> <span class="form-label">Phone</span> </div>
+                                  <div class="form-group"> 
+                                    <input class="form-control" type="tel" placeholder="Enter your Phone Number">
+                                    {{form.phoneNumber}}
+                                     <span class="form-label">Phone</span> </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group"> <select class="form-control" required>
@@ -275,6 +288,7 @@
                                     <div class="col-md-12">
                                       <div class="form-group">
                                         <option value="" selected hidden>Order Description</option>
+                                        {{form.reserveOrder}}
                                         <textarea class="order-desc col-md-12" id="order-text" name="order-text" placeholder="Enter your order here" rows="5"></textarea>
                                         <span class="form-label">Order</span>
                                       </div>

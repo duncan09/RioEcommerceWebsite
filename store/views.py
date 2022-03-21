@@ -17,7 +17,6 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import CheckoutForm, ReservationForm
 from django.http import HttpResponse
-import requests
 from requests.auth import HTTPBasicAuth
 import json
 from django_daraja.mpesa.core import MpesaClient
@@ -31,7 +30,6 @@ user_location=Point(longitude,latitude,srid=4326)
 class VendorView(generic.ListView):
     model=Franchise
     context_object_name = 'vendors'
-    paginate_by=10
     queryset = Franchise.objects.all()   #annotate(distance=Distance('location',
     # user_location)
     # ).order_by('distance')[0:6]
@@ -99,15 +97,16 @@ class CheckoutView(View):
         form=CheckoutForm(self.request.POST or None)
         try:
             order=Order.objects.get(user=self.request.user,ordered=False)
-            if form.is_valid:
+            if form.is_valid():
+            
                 first_name=form.cleaned_data.get('first_name')
                 last_name=form.cleaned_data.get('last_name')
                 phone_number=form.cleaned_data.get('phone_number')
                 email=form.cleaned_data.get('email')
                 location=form.cleaned_data.get('location')
                 delivery_address=form.cleaned_data.get('delivery_address')
-                same_billing_address=form.cleaned_data.get('same_billing_address')
-                save_info=form.cleaned_data.get('save_info')
+                # same_billing_address=form.cleaned_data.get('same_billing_address')
+                # save_info=form.cleaned_data.get('save_info')
                 billing_address=BillingAddress(
                 user=self.request.user,
                 first_name=first_name,
@@ -116,10 +115,10 @@ class CheckoutView(View):
                 email=email,
                 location=location,
                 delivery_address=delivery_address,
-                same_billing_address=same_billing_address,
-                save_info=save_info
+                # same_billing_address=same_billing_address,
+                # save_info=save_info
                 )
-                messages.info("Your details have been received")
+                messages.info(self.request,"Your details have been received")
                 billing_address.save()
                 order.billing_address=billing_address
                 order.save()
@@ -133,6 +132,55 @@ class CheckoutView(View):
         except ObjectDoesNotExist:
             messages.error(request,"You do not have an active order")
             return redirect("store:order-summary")
+
+#a function for the restaurant check out page
+class RestaurantCheckoutView(View):
+    def get(self,*args,**kwargs):
+        form=CheckoutForm()
+        context={
+            'form':form
+        }
+        return render(self.request,"checkoutRestaurant.html",context)
+
+    def post(self,*args,**kwargs):
+        form=CheckoutForm(self.request.POST or None)
+        try:
+            order=RestaurantOrder.objects.get(user=self.request.user,ordered=False)
+            if form.is_valid():
+            
+                first_name=form.cleaned_data.get('first_name')
+                last_name=form.cleaned_data.get('last_name')
+                phone_number=form.cleaned_data.get('phone_number')
+                email=form.cleaned_data.get('email')
+                location=form.cleaned_data.get('location')
+                delivery_address=form.cleaned_data.get('delivery_address')
+                # same_billing_address=form.cleaned_data.get('same_billing_address')
+                # save_info=form.cleaned_data.get('save_info')
+                billing_address=BillingAddress(
+                user=self.request.user,
+                first_name=first_name,
+                last_name=last_name,
+                phone_number=phone_number,
+                email=email,
+                location=location,
+                delivery_address=delivery_address,
+                # same_billing_address=same_billing_address,
+                # save_info=save_info
+                )
+                messages.info(self.request,"Your details have been received")
+                billing_address.save()
+                order.billing_address=billing_address
+                order.save()
+                #TODO: redirect to the payment option
+                
+                return redirect('store:restaurant-checkout')
+            messages.warning(self.request,"Failed checkout")
+            return redirect('store:restaurant-checkout')
+
+            
+        except ObjectDoesNotExist:
+            messages.error(request,"You do not have an active order")
+            return redirect("store:food-order-summary")
         
         
 class PaymentView(View):
@@ -161,6 +209,7 @@ class ItemDetailView(DetailView):
 class FoodDetailView(DetailView):
     model=FoodItem
     template_name="chosen_food_items.html"
+
 
 
 #defining a method that will add an order to cart and remove it when removed

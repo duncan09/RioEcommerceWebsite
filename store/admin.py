@@ -1,7 +1,7 @@
 
 from django.contrib import admin
 from django.contrib.admin import AdminSite
-from .models import Franchise, Item, Mongers,OrderItem,Order, Restaurant, Franchise,FoodItem, RestaurantOrder, RestaurantOrderItem
+from .models import Franchise, Item, Mongers,OrderItem,Order, Reservation, Restaurant, Franchise,FoodItem, RestaurantOrder, RestaurantOrderItem,BillingAddress
 from django.contrib.gis.admin import OSMGeoAdmin
 from django.utils.translation import gettext_lazy
 
@@ -14,6 +14,12 @@ class FranchiseAdmin(admin.ModelAdmin):
 
 class RestaurantAdmin(admin.ModelAdmin):
     list_display=('name','address','location','open_status')
+
+class OrderAdmin(admin.ModelAdmin):
+    list_display=('ordered','billing_address') 
+
+class ReserveAdmin(admin.ModelAdmin):
+    list_display=('username','reserveDate','reserveTime','restaurant','reserveOrder') 
 
 class ItemAdmin(admin.ModelAdmin):
     list_display=('title','price','category','label','description')
@@ -41,10 +47,12 @@ admin.site.site_title = 'Administration' # default: "Django site admin"
 admin.site.register(Item,ItemAdmin)
 admin.site.register(OrderItem)
 admin.site.register(RestaurantOrderItem)
-admin.site.register(Order)
+admin.site.register(Order,OrderAdmin)
 admin.site.register(RestaurantOrder)
 admin.site.register(Restaurant,RestaurantAdmin)
 admin.site.register(FoodItem,FoodItemAdmin)
 admin.site.register(Franchise,FranchiseAdmin)
 admin.site.register(Mongers)
+admin.site.register(Reservation)
+admin.site.register(BillingAddress)
 
