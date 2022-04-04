@@ -1,16 +1,16 @@
 from django.urls import path,include
-from store.views import (CheckoutView, FoodDetailView, FoodOrderSummaryView, ItemDetailView, MongerView, RestaurantCheckoutView,
+from store.views import (CheckoutView, FoodDetailView, FoodOrderSummaryView, ItemDetailView, MongerView, ReservationView, RestaurantCheckoutView,
  RestaurantView,
   VendorView,
 HomeView,
 OrderSummaryView,
-add_to_cart, food_add_to_cart, food_remove_from_cart, getAccessToken,
+add_to_cart, food_add_to_cart, food_remove_from_cart, getAccessToken, login_view,
 remove_from_cart, remove_single_fooditem_from_cart,
 remove_single_from_cart,
 about_page,
 TestView,
 FoodItemView,
-PaymentView, stk_push_callback, test_lipa)
+PaymentView, stk_push_callback, test_lipa,signup)
 
 app_name='store'
 urlpatterns=[
@@ -18,6 +18,7 @@ urlpatterns=[
     path('products/<slug>/',ItemDetailView.as_view(),name='products'),
     path('food-products/<slug>/',FoodDetailView.as_view(),name='food-products'),
     path('checkout',CheckoutView.as_view(),name='checkout'),
+    path('reservation',ReservationView.as_view(),name='reservation'),
     path('restaurant-checkout',RestaurantCheckoutView.as_view(),name='restaurant-checkout'),
     path('order-summary',OrderSummaryView.as_view(),name='order-summary'),
     path('food-order-summary',FoodOrderSummaryView.as_view(),name='food-order-summary'),
@@ -38,4 +39,6 @@ urlpatterns=[
     path('payment/',PaymentView.as_view(),name='payment'),
     path('lipastk',test_lipa,name='lipastk'),
     path('stkpush',stk_push_callback,name='mpesa_stk_push_callback'),
+    path('signup',signup,name='signup'),
+    path('loginview',login_view,name='loginview'),
 ]

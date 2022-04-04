@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'debug_toolbar',
     'django_daraja',
+    'phonenumber_field'
 ]
 
 MIDDLEWARE = [

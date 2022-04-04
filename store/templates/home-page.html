@@ -21,7 +21,7 @@
 
       <!--First slide-->
       <div class="carousel-item active">
-        <div class="view">
+        <div class="view" style="background-image: url('static/images/fish_ugali.jpg'); background-repeat: no-repeat; background-size: cover;">
 
           <!-- Mask & flexbox options-->
           <div class="mask rgba-black-strong d-flex justify-content-center align-items-center">
@@ -52,7 +52,7 @@
       <!--/First slide-->
 
       <!--Second slide-->
-      <div class="carousel-item">
+      <div class="carousel-item-1">
         <div class="view">
 
           <!-- Mask & flexbox options-->
@@ -89,7 +89,7 @@
       <!--/Second slide-->
 
       <!--Third slide-->
-      <div class="carousel-item">
+      <div class="carousel-item-2">
         <div class="view">
 
           <!-- Mask & flexbox options-->
@@ -139,13 +139,11 @@
 
   <!--Main layout-->
   <main>
-    <div class="container" style="height: 600px;">
+    <div class="container text-center" style="height: 600px;">
 
       <!--Navbar-->
       <p>
-        <h1>Below are the facilities under which you will find your preferred type of fish</h1>
-        <h6 class="blue-text">Select Traders to buy from your local fish-monger, Frachises to buy from the closest Rio Franchise to you or
-          Restaurant to either reserve a seat or order take-away
+        <h2 class="blue-text"><strong>Select Category</strong></h2>
         
       </p>
       <!--/.Navbar-->
@@ -168,7 +166,7 @@
 
               <!--Card image-->
               <div class="view overlay hover-overlay">
-                <img src="{% static 'images/franchise_front.jpg' %}" class="card-img-top"
+                <img src="{% static 'images/fish-market.png' %}" class="card-img-top"
                   alt="">
                 <a>
                   <div class="mask rgba-white-slight"></div>
@@ -180,7 +178,7 @@
               <div class="card-body text-center">
                 <!--Category & Title-->
                 <a href="/vendor" target="" class="blue-text">
-                  <h5>Franchise</h5>
+                  <h5>Franchises</h5>
                 </a>
                 <!-- <h5>
                   <strong>
@@ -211,7 +209,7 @@
 
               <!--Card image-->
               <div class="view overlay">
-                <img src="{% static 'images/loft.jpg' %}" class="card-img-top"
+                <img src="{% static 'images/restaurant.png' %}" class="card-img-top"
                   alt="">
                 <a>
                   <div class="mask rgba-white-slight"></div>
@@ -252,7 +250,7 @@
 
               <!--Card image-->
               <div class="view overlay">
-                <img src="{% static 'images/monger.jpeg' %}" class="card-img-top"
+                <img src="{% static 'images/seller.png' %}" class="card-img-top"
                   alt="">
                 <a>
                   <div class="mask rgba-white-slight"></div>

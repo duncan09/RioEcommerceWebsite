@@ -1,3 +1,6 @@
+from datetime import datetime
+from distutils.log import error
+import re
 from django.urls import reverse
 from urllib import request
 from django.shortcuts import redirect, render,get_object_or_404
@@ -6,7 +9,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.views.generic import ListView,DetailView,TemplateView,View
 
 # from store.mpesa_credentials import LipanaMpesaPassword, MpesaAccessToken
-from store.models import FoodItem, Franchise, Item, Mongers,OrderItem,Order,Franchise, Reservation,Restaurant,BillingAddress, RestaurantOrder, RestaurantOrderItem
+from store.models import FoodItem, Franchise, Item, Mongers,OrderItem,Order,Franchise, Profile, Reservation,Restaurant,BillingAddress, RestaurantOrder, RestaurantOrderItem
 from django.utils import timezone
 from django.contrib import messages
 from django.views import generic
@@ -15,11 +18,14 @@ from django.contrib.gis.db.models.functions import Distance
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from .forms import CheckoutForm, ReservationForm
+from .forms import CheckoutForm, ReservationForm, UserSignUpForm
 from django.http import HttpResponse
 from requests.auth import HTTPBasicAuth
 import json
 from django_daraja.mpesa.core import MpesaClient
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import login
+import dateutil.parser
 # Create your views here.
 
  	
@@ -455,26 +461,101 @@ def stk_push_callback(request):
 # not required
 
 #creating a view for the reservation form
-@login_required
-def reservationForm(View):
-    if request.method=='POST':
-        form=ReservationForm(request.POST,user=request.user)
-        if form.is_valid():
-            fullName=request.cleaned_data.get()
-            reserveDate=request.POST['date']
-            reserveTime=request.POST['time']
-            phoneNumber=request.POST['phoneNumber']
-            familySize=request.POST['familySize']
-            reserveOrder=request.POST['order']
+class ReservationView(View):
+    def get(self,*args,**kwargs):
+        form=ReservationForm()
+        context={
+            'form':form
+        }
+        return render(self.request,"reservation.html",context)
 
-    reserveOrder=Reservation.objects.create(
-        fullName=fullName,
-        reserveDate=reserveDate,
-        reserveTime=reserveTime,
-        phoneNumber=phoneNumber,
-        familySize=familySize,
-        reserveOrder=reserveOrder
-    )
+    def post(self,*args,**kwargs):
+        form=ReservationForm(self.request.POST)
+        # print(self.request.POST)
+        if form.is_valid():
+            try:
+                print("form is valid")
+                print(form.cleaned_data)
+                fullName=form.cleaned_data.get('fullName')
+                reserveDate=str(form.cleaned_data.get('reserveDate'))
+                reserveTime=str(form.cleaned_data.get('reserveTime'))
+                restaurant=form.cleaned_data.get('restaurant')
+                phoneNumber=form.cleaned_data.get('phoneNumber')
+                familySize=form.cleaned_data.get('familySize')
+                reserveOrder=form.cleaned_data.get('reserveOrder')
+
+                converted_date=datetime.strptime(reserveDate,'%Y-%m-%d').date() if reserveDate else None
+                converted_time=datetime.strptime(reserveTime,'%H:%M:%S').time() if reserveTime else None
+                
+                reservation=Reservation(
+                    user=self.request.user,
+                fullName=fullName,
+                reserveDate=converted_date,
+                
+                reserveTime=converted_time,
+                restaurant=restaurant,
+                phoneNumber=phoneNumber,
+                familySize=familySize,
+                reserveOrder=reserveOrder,
+                
+                )
+                reservation.save()
+                messages.info(self.request,"Your details have been received")
+                
+                
+                return redirect('store:reservation')
+            except TypeError as e:
+                print(e)
+        else:
+            # print(form.errors)
+            messages.warning(self.request,"Please enter your details again")
+
+        messages.warning(self.request,"Try again")
+        return redirect('store:reservation')
+
+
+#newly added function
+def update_user_data(user):
+    Profile.objects.update_or_create(user=user, defaults={'mobile': user.profile.mobile,'fullName':user.profile.fullName})
+
+def signup(request):
+    if request.method == 'POST':
+        form = UserSignUpForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            user.refresh_from_db()
+            user.profile.mobile = form.cleaned_data.get('mobile')
+            user.profile.fullName = form.cleaned_data.get('fullName')
+            update_user_data(user)  
+            login(request,user) 
+            # load the profile instance created by the signal
+            # raw_password = form.cleaned_data.get('password1')
+ 
+            # redirect user to home page
+            return redirect('/')
+    else:
+        form = UserSignUpForm()
+    return render(request, 'signup.html', {'form': form})
+
+
+def login_view(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = AuthenticationForm(data=request.POST)
+        if user.is_valid():
+            person=user.get_user()
+            login(request,person)
+            
+            messages.success(request, f' welcome {username} !!')
+            return redirect('/')
+        else:
+            messages.info(request, f'account does not exist please sign in')
+    form = AuthenticationForm()
+    return render(request, 'loginForm.html', {'form':form, 'title':'log in'})
+        
+
+
         
         
     

@@ -1,7 +1,7 @@
 
 from django.contrib import admin
 from django.contrib.admin import AdminSite
-from .models import Franchise, Item, Mongers,OrderItem,Order, Reservation, Restaurant, Franchise,FoodItem, RestaurantOrder, RestaurantOrderItem,BillingAddress
+from .models import Franchise, Item, Mongers,OrderItem,Order, Reservation, Restaurant, Franchise,FoodItem, RestaurantOrder, RestaurantOrderItem,BillingAddress,Profile
 from django.contrib.gis.admin import OSMGeoAdmin
 from django.utils.translation import gettext_lazy
 
@@ -19,13 +19,14 @@ class OrderAdmin(admin.ModelAdmin):
     list_display=('ordered','billing_address') 
 
 class ReserveAdmin(admin.ModelAdmin):
-    list_display=('username','reserveDate','reserveTime','restaurant','reserveOrder') 
+    list_display=('fullName','reserveDate','reserveTime','restaurant','reserveOrder') 
 
 class ItemAdmin(admin.ModelAdmin):
     list_display=('title','price','category','label','description')
 
 class FoodItemAdmin(admin.ModelAdmin):
     list_display=('name','description','price','type','size')
+
 
 # class MyAdminSite(AdminSite):
 #     # Text to put at the end of each page's <title>.
@@ -53,6 +54,6 @@ admin.site.register(Restaurant,RestaurantAdmin)
 admin.site.register(FoodItem,FoodItemAdmin)
 admin.site.register(Franchise,FranchiseAdmin)
 admin.site.register(Mongers)
-admin.site.register(Reservation)
+admin.site.register(Reservation,ReserveAdmin)
 admin.site.register(BillingAddress)
-
+admin.site.register(Profile)

@@ -1,9 +1,11 @@
+from datetime import datetime
 from unicodedata import category
 from django.forms import FloatField
 from django.shortcuts import reverse
 from django.conf import settings
 from django.db import models
 from django.contrib.gis.db import models
+from phonenumber_field.modelfields import PhoneNumberField
 
 
 # Create your models here.
@@ -70,7 +72,6 @@ FISH_TYPES=(
     ('Processed, Smoked','Processed, Smoked'),
     ('Processed, Fried','Processed, Fried')
 )
-
 class Item(models.Model):
     title=models.CharField(max_length=100)
     price=models.FloatField()
@@ -280,26 +281,20 @@ class RestaurantOrder(models.Model):
     # def __str__(self):
     #     return "%s the place" % self.name
 
-
-
-
-class Payment(models.Model):
-    mpesa_charge_id=models.CharField(max_length=50)
-    user=models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.SET_NULL,blank=True,null=True)
-    amount=models.FloatField()
-    timestamp=models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return self.user.username
-
 class Reservation(models.Model):
     user=models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.CASCADE)
+    fullName=models.CharField(max_length=100)
     reserveDate=models.DateField()
     phoneNumber=models.CharField(max_length=100)
-    reserveTime=models.DateTimeField()
+    reserveTime=models.TimeField()
     restaurant=models.ForeignKey(Restaurant,on_delete=models.CASCADE,blank=True)
     familySize=models.IntegerField()
     reserveOrder=models.TextField()
 
     def __str__(self):
         return self.user.username
+
+class Profile(models.Model):
+    user=models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    fullName=models.CharField(max_length=100)
+    mobile=models.IntegerField()

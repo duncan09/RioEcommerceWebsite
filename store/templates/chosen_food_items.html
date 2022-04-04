@@ -15,28 +15,7 @@
 
 
 <body>
-  <script>
-    jQuery(document).ready(function () {
-        jQuery('ul.tabs li').click(function () {
-          document.querySelector('#content1').style.display = 'none';
-          document.querySelector('#content2').style.display = 'none';
-            var tab_id = jQuery(this).attr('data-tab');
-            
-    
-            jQuery('ul.tabs li').not('[data-tab='+tab_id+']').removeClass('current');
-            jQuery('.tab-content:not(#'+tab_id+')').removeClass('current');
-    
-            jQuery(this).toggleClass('current');
-            jQuery("#" + tab_id).toggleClass('current');
-        
-        
-        })
-      
-      
-    
-    });
-    </script>
- 
+
     <script>
   //     jQuery(document).ready(function (e) {
   //       jQuery('ul.nav li').click(function () {
@@ -78,6 +57,12 @@
 
   <!--Main layout-->
   <main>
+    <div class="container py-4">
+      <h5>
+        Do you prefer to dine in our restaurant? Click <a href="/reservation" class="blue-text">here</a> to Reserve
+        a table instead
+      </h5>
+    </div>
     
     <div class="container mt-3">
 
@@ -88,30 +73,61 @@
          <!-- The grid: four columns -->
         <div class=" col-sm-8 mb-3 d-flex align-items-start">
           <img src="{% static 'images/stew.jpg' %}"
-           height="200px" alt="Responsive image" class="img-fluid rounded float-left">
+          alt="Responsive image" class="img-fluid rounded float-left">
         </div>
 
               <div class="col-sm-4 mb-3 d-flex align-items-start">
-              <div class="row mr-2">
-                <div class="col">
-                <img src="{% static 'images/fish_fries.jpg' %}" class=" rounded float-left mb-2 d-flex"
-               class="img-fluid" alt="Responsive image" height="200px" width="200px">
+                <div class="card-body">
+                  <h5 class="red-text">
+                    {{object.name}}
+                  </h5>
+                  <h5><strong>Kshs {{object.price}}</strong></h5>
+                 
+        <div>
+          <form class="extras-form align-items-start">
+            <div class="my-3">
+                <p class="lead font-weight-normal font-size">
+                    Select an accompaniment
+                </p>
+                <div class="form-check my-2">
+                    <input type="checkbox" name="q1" value="ugali" checked>
+                    <label class="form-check-label">Ugali</label>
+                </div>
+                <div class="form-check my-2">
+                    <input type="checkbox" name="q1" value="rice">
+                    <label class="form-check-label">Rice</label>
+                </div>
+                <div class="form-check my-2">
+                  <input type="checkbox" name="q1" value="chapo">
+                  <label class="form-check-label">Chapati</label>
               </div>
-              <div class="col">
-                <img src="{% static 'images/fish_brown_ugali.jpg' %}" class="rounded float-left mb-2 d-flex"
-                 class="img-fluid" alt="Responsive image" height="200px" width="200px">
+            </div>
+            <div class="">
+              <p class="lead font-weight-normal">
+                Vegetables
+            </p>
+                <div class="form-check my-2">
+                    <input type="checkbox" name="" value="skuma" checked>
+                    <label class="form-check-label">Sukuma wiki</label>
+                </div>
+                <div class="form-check my-2">
+                    <input type="checkbox" name="q2" value="managu">
+                    <label class="form-check-label">Managu</label>
+                </div>
+                <div class="form-check my-2">
+                  <input type="checkbox" name="q2" value="mixed">
+                  <label class="form-check-label">Mixed veggies</label>
               </div>
             </div>
-            <div class="row">
-            <div class="col">
-              <img src="{% static 'images/fish_raw.jpg' %}" class="rounded float-left mb-2"
-               class="img-fluid" alt="image" width="200px" height="200px">
+            <div class="text-center">
+                <a href="{{object.get_food_add_to_cart_url}}" type="" class="btn btn-primary rounded">Add to cart</a>
             </div>
-            <div class="col">
-              <img src="{% static 'images/fish_plate.jpg' %}" class="rounded float-left mb-2"
-              class="img-fluid" alt="image" width="200px" height="200px">
-            </div>
-            </div>
+        </form>
+        </div>
+
+                </div>
+               
+             
               </div>
             </div>
           </div>
@@ -119,8 +135,8 @@
         
       <!--Grid row tabs for selecting order below-->
       <div class="container">
-      <div class="row">
-        <div class="tabs-container container mb-2">
+        
+        <!-- <div class="tabs-container container mb-2">
  
           <ul class="tabs">
         
@@ -131,8 +147,7 @@
           
             
           </ul>
-        </div>
-      </div>
+        </div> -->
       </div>
       
     
@@ -140,7 +155,7 @@
       
       <div class="container" style="height: 300px;margin-bottom: 40px;">
         <div class="row">
-          <div class="col-3">
+          <!-- <div class="col-3">
         <div id="tab-1" class="tab-content">
           
             <div class=" sidenav wrapper d-flex flex-column flex-shrink-0" id="mySideNav">
@@ -151,13 +166,13 @@
               </ul>
             </div>
           </div>
-        </div>
-          <div class="col-9">
+        </div> -->
+          <!-- <div class="col-9"> -->
             
             <!-- side navigation for accompaniments container -->
-         <div class="container">
+         <!-- <div class="container"> -->
            <!-- beverages div -->
-              <div id="content1" class="nav-content" style="margin-left: 3%;">
+              <!-- <div id="content1" class="nav-content" style="margin-left: 3%;">
                 <div class="row">
                 <div class="col">
                   <img src="{% static 'images/coke.jpeg' %}" 
@@ -172,10 +187,10 @@
                   </a>
                 </div>
               </div>
-            </div>
+            </div> -->
             
             <!-- side dish div -->
-            <div id="content2" class="nav-content" style="margin-left: 3%;">
+            <!-- <div id="content2" class="nav-content" style="margin-left: 3%;">
               <div class="row">
               <div class="col">
                 <img src="{% static 'images/ugali.jpeg' %}" 
@@ -192,9 +207,9 @@
             
           </div>
           
-        </div> 
+        </div>  -->
                 <!-- Snacks div -->
-                <div class="container">
+                <!-- <div class="container">
                   <div id="content3" class="nav-content" style="margin-left: 10%;">
                     <div class="row">
                     <div class="col">
@@ -211,101 +226,14 @@
                     </div>
                   </div>
                 </div>
-              </div> 
-          </div> 
+              </div>  -->
+          <!-- </div>  -->
 
     </div>
       <!-- Reservation form -->
       
     </div>
-    <div class="container mb-5" style="height: 580px;margin-bottom: 40px;">
-      <div id="tab-2" class="tab-content">
-        <div id="booking" class="section">
-          <div class="section-center">
-              <div class="container">
-                  <div class="row">
-                      <div class="booking-form">
-                          <div class="form-header">
-                              <h1>Make your reservation</h1>
-                          </div>
-                          <form method="POST">
-                            {% csrf_token %}
-                              <div class="form-group">
-                                 <input class="form-control" type="text" placeholder="Name">
-                                 {{form.fullName}}
-                                 <span class="form-label">Full Name</span> </div>
-                              <div class="row">
-                                  <div class="col-md-6">
-                                      <div class="form-group"> 
-                                        <input class="form-control" type="date" required>
-                                        {{form.reserveDate}}
-                                         <span class="form-label">Date</span> </div>
-                                  </div>
-                                  <div class="col-md-6">
-                                      <div class="form-group">
-                                         <input class="form-control" type="time" required>
-                                         {{form.reserveTime}}
-                                          <span class="form-label">Time</span> </div>
-                                  </div>
-                              </div>
-                              <div class="row">
-        
-                                <div class="col-md-6">
-                                  <div class="form-group"> 
-                                    <input class="form-control" type="tel" placeholder="Enter your Phone Number">
-                                    {{form.phoneNumber}}
-                                     <span class="form-label">Phone</span> </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group"> <select class="form-control" required>
-                                            <option value="" selected hidden>Choose restaurant</option>
-                                            <option>The Loft</option>
-                                            
-                                        </select> <span class="form-label">Restaurant</span>
-                                       </div>
-                                        
-                                </div>
-                            </div>
-                              <div class="row">
-        
-                                  <!-- <div class="col-md-6">
-                                    <div class="form-group"> <input class="form-control" type="tel" placeholder="Enter your Phone Number"> <span class="form-label">Phone</span> </div>
-                                  </div> -->
-                                  <div class="col-md-6">
-                                      <div class="form-group"> <select class="form-control" required>
-                                              <option value="" selected hidden>Number of family members</option>
-                                              <option>1</option>
-                                              <option>2</option>
-                                              <option>3</option>
-                                              <option>4</option>
-                                              <option>5</option>
-                                          </select> <span class="form-label">Family Size</span>
-                                         </div>
-                                          
-                                  </div>
-                              </div>
-                                  <div class="row">
-                                    <div class="col-md-12">
-                                      <div class="form-group">
-                                        <option value="" selected hidden>Order Description</option>
-                                        {{form.reserveOrder}}
-                                        <textarea class="order-desc col-md-12" id="order-text" name="order-text" placeholder="Enter your order here" rows="5"></textarea>
-                                        <span class="form-label">Order</span>
-                                      </div>
-                                    </div>
-                                </div>
-                            
-                              <div class="row">
-                                <div class="form-btn"> <button class="submit-btn">Book Now</button> </div>
-                            </div>
-                          </div>
-                          </form>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-    </div>
+   
 
   </div>
     

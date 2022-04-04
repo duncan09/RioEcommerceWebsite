@@ -35,7 +35,7 @@
               target="{{checkout}}">Checkout</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link waves-effect" href="/food_items" target="">Reservation
+            <a class="nav-link waves-effect" href="/reservation" target="">Reservation
               </a>
           </li>
         </ul>
@@ -46,19 +46,13 @@
          
             <li class="nav-item mr-2">
               <a href="{% url 'store:order-summary' %}" class="nav-link waves-effect">
-                <span class="badge red z-depth-1 mr-1"> {{request.user|cart_item_count}} </span>
+                <!-- <span class="badge red z-depth-1 mr-1"> </span> -->
                 <i class="fas fa-shopping-cart"></i>
                 <span class="clearfix d-none d-sm-inline-block"> Cart </span>
               </a>
             </li>
+            <!-- {{request.user|cart_item_count}}  -->
             
-            <li class="nav-item mr-2">
-              <a href="{% url 'store:food-order-summary' %}" class="nav-link waves-effect">
-                <span class="badge blue z-depth-1 mr-1"> {{request.user|cart_item_count}} </span>
-                <i class="fas fa-shopping-cart"></i>
-                <span class="clearfix d-none d-sm-inline-block"> Cart </span>
-              </a>
-            </li>
             
             
             <li class="nav-item">
@@ -69,14 +63,14 @@
             </li>
           {% else %}
             <li class="nav-item">
-              <a href="{% url 'account_login' %}" class="nav-link border border-light rounded waves-effect"
-                target="{% url 'account_login' %}">
+              <a href="{% url 'store:loginview' %}" class="nav-link border border-light rounded waves-effect"
+                target="{% url 'store:loginview' %}">
                 <i class="fas fa-sign-in-alt"></i>Login
               </a>
             </li>
-            <li class="nav-item">
-              <a href="{% url 'account_signup' %}" class="nav-link border border-light rounded waves-effect"
-                target="{% url 'account_signup' %}">
+            <li class="nav-item ml-2">
+              <a href="{% url 'store:signup' %}" class="nav-link border border-light rounded waves-effect"
+                target="{% url 'store:signup' %}">
                 <i class="fas fa-sign-up-alt"></i>Sign Up
               </a>
             </li>
